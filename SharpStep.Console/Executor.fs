@@ -3,21 +3,18 @@ namespace SharpStep.Console
 open SharpStep.Core
 open System.Reactive.Linq
 
-
 module Executor =
     let execute (command: Command) : StdOut =
         match command with
-        | Handshake (Version version) ->
+        | Handshake version ->
             version
-            |> sprintf "st3p version %d ok"
-            |> Observable.Return
-        | Identify ->
-            [ "name sharp-step"
-              "author artfuldev<hello@artful.dev>"
-              "version 0.1"
-              "url https://github.com/artfuldev/sharp-step"
-              "ok" ]
+            |> ReturnHandshake
+            |> Response.strings
             |> Observable.ToObservable
-            |> Observable.map (sprintf "identify %s")
-        | Move _ -> command |> sprintf "%O" |> Observable.Return
+        | Identify ->
+            ("sharp-step", "0.1", "artfuldev<hello@artful.dev>", "https://github.com/artfuldev/sharp-step")
+            |> Identification
+            |> Response.strings
+            |> Observable.ToObservable
+        | Move _ -> Observable.Empty()
         | Quit -> Observable.Empty()

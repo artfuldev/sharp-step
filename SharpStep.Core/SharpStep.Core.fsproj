@@ -8,5 +8,6 @@
     <Compile Include="Cell.fs" />
     <Compile Include="Board.fs" />
     <Compile Include="Command.fs" />
+    <Compile Include="Response.fs" />
   </ItemGroup>
 </Project>
