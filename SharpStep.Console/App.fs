@@ -1,6 +1,6 @@
 namespace SharpStep.Console
 
-
+open SharpStep.Core
 open System.Reactive.Linq
 open Parser
 
@@ -13,15 +13,27 @@ module App =
             |> Observable.Publish
             |> Observable.RefCount
 
-        let stdout =
+        let commands =
             parsed
             |> Observable.filter Result.isOk
-            |> Observable.map debug
+            |> Observable.map Result.toOption
+            |> Observable.choose id
+            |> Observable.Publish
+            |> Observable.RefCount
+
+        let stdout =
+            commands
+            |> Observable.filter ((<>) Quit)
+            |> Observable.map string
 
         let stderr =
             parsed
             |> Observable.filter Result.isError
             |> Observable.map debug
 
-        let exit = Observable.Never<int>()
+        let exit =
+            commands
+            |> Observable.filter ((=) Quit)
+            |> Observable.map (fun _ -> 0)
+
         Outputs.create stdout stderr exit
