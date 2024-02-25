@@ -7,6 +7,7 @@
     <Compile Include="Inputs.fs" />
     <Compile Include="Outputs.fs" />
     <Compile Include="Parser.fs" />
+    <Compile Include="Executor.fs" />
     <Compile Include="App.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

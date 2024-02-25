@@ -3,6 +3,7 @@ namespace SharpStep.Console
 open SharpStep.Core
 open System.Reactive.Linq
 open Parser
+open Executor
 
 module App =
 
@@ -24,7 +25,8 @@ module App =
         let stdout =
             commands
             |> Observable.filter ((<>) Quit)
-            |> Observable.map string
+            |> Observable.map execute
+            |> Observable.Switch
 
         let stderr =
             parsed
