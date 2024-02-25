@@ -12,7 +12,7 @@ type Inputs = private Inputs of StdIn
 module Inputs =
     let create _ =
         Inputs(
-            Observable.Create<string> (fun (observer: IObserver<string>) ->
+            Observable.Create (fun (observer: IObserver<string>) ->
                 let running = ref true
 
                 let readLines () =
@@ -31,4 +31,6 @@ module Inputs =
 
                 // Return a disposable that stops reading.
                 Disposable.Create(fun () -> running := false))
+            |> Observable.Publish
+            |> Observable.RefCount
         )

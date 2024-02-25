@@ -2,6 +2,7 @@ namespace SharpStep.Console
 
 open System
 open System.Reactive.Disposables
+open System.Threading
 
 type StdOut = IObservable<string>
 
@@ -12,14 +13,14 @@ type Exit = IObservable<int>
 type Outputs = private Outputs of StdOut * StdErr * Exit
 
 module Outputs =
-    let create out err exit = Outputs(out, err, exit)
+    let create stdout stderr exit = Outputs(stdout, stderr, exit)
 
-    let handle (Outputs (out, err, exit)) =
-        out.Subscribe(fun (x) -> Console.WriteLine(x))
-        |> ignore
+    let private out = fun (x: string) -> Console.WriteLine(x)
 
-        err.Subscribe(fun (x: string) -> Console.Error.WriteLine(x))
-        |> ignore
+    let private err =
+        fun (x: string) -> Console.Error.WriteLine(x)
 
-        exit.Subscribe(fun x -> Environment.Exit(x))
-        |> ignore
+    let handle (Outputs (stdout, stderr, exit)) =
+        stdout.Subscribe(out) |> ignore
+        stderr.Subscribe(err) |> ignore
+        exit.Subscribe(Environment.Exit) |> ignore

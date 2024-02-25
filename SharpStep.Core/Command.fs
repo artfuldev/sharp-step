@@ -12,5 +12,5 @@ type Time =
 type Command =
     | Handshake of Version
     | Identify
-    | Move of Board * Side * Time
+    | Move of (Board * Side) * Time
     | Quit
