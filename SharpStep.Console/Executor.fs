@@ -14,8 +14,8 @@ module Executor =
             |> Response.strings
             |> Observable.ToObservable
         | Identify ->
-            ("sharp-step", "0.1", "artfuldev<hello@artful.dev>", "https://github.com/artfuldev/sharp-step")
-            |> Identification
+            "0.9"
+            |> Response.identify
             |> Response.strings
             |> Observable.ToObservable
         | Move ((board, side), time) ->

@@ -14,6 +14,8 @@ type Response =
     | BestMove of Position
 
 module Response =
+    let identify version =
+        Identification("sharp-step", version, "artfuldev<hello@artful.dev>", "https://github.com/artfuldev/sharp-step")
 
     let strings =
         function
