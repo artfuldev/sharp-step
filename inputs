@@ -3,5 +3,6 @@ identify
 garbage
 move 3_/3_/3_ x
 move 3_/_x_/3_ o
+move xox/oxo/3_ x
 quit
 move 3_/3_/3_ x
