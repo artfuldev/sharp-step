@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Solver.fs" />
+    <Compile Include="Timed.fs" />
     <Compile Include="Random.fs" />
   </ItemGroup>
   <ItemGroup>
