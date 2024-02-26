@@ -60,5 +60,5 @@ module Parser =
 
     let debug (result: Result<Command, string>) =
         match result with
-        | Result.Ok cmd  -> sprintf "Success: %A" cmd
-        | Result.Error msg -> sprintf "Failure: %A" msg
+        | Result.Ok cmd  -> sprintf "Known command: %A" cmd
+        | Result.Error msg -> sprintf "Unknown command: %A" msg
