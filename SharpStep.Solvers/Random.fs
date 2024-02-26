@@ -7,7 +7,7 @@ open System.Reactive.Linq
 
 module Random =
 
-    let private shuffle (list: seq<'a>) : seq<'a> =
+    let private shuffle list =
         let rand = Random()
         let array = Seq.toArray list
         let n = Array.length array
@@ -18,13 +18,18 @@ module Random =
             array.[i] <- array.[j]
             array.[j] <- tmp
 
-        Array.toList array
+        Array.toSeq array
+
+    let position board =
+        task {
+            return
+                board
+                |> positions
+                |> Seq.filter ((at board) >> ((=) Playable))
+                |> shuffle
+                |> Seq.tryHead
+        }
 
     let solver (((board, _), _): Specification) =
-        board
-        |> positions
-        |> Seq.filter ((at board) >> ((=) Playable))
-        |> shuffle
-        |> Seq.tryHead
-        |> Observable.Return
+        Observable.StartAsync(fun () -> position board)
         |> Observable.choose id
