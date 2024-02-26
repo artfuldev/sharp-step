@@ -2,6 +2,7 @@
 
 open System
 open SharpStep.Core
+open SharpStep.Core.Position
 
 module Random =
 
@@ -22,8 +23,8 @@ module Random =
         task {
             return
                 board
-                |> Position.positions
+                |> positions
+                |> Seq.filter ((at board) >> ((=) Playable))
                 |> shuffle
-                |> Seq.filter ((Position.at board) >> ((=) Playable))
                 |> Seq.tryHead
         }
