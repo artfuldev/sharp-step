@@ -13,6 +13,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpStep.Core\SharpStep.Core.fsproj" />
+    <ProjectReference Include="..\SharpStep.Solvers\SharpStep.Solvers.fsproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FParsec" Version="1.1.1" />

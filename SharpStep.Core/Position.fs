@@ -25,3 +25,5 @@ module Position =
         cells
         |> Seq.mapi (fun i row -> row |> Seq.mapi (fun j _ -> Position(j, i)))
         |> Seq.collect id
+
+    let at (Board cells) (Position (j, i)) = cells.[i].[j]

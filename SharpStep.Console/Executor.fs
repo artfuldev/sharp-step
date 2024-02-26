@@ -2,6 +2,7 @@ namespace SharpStep.Console
 
 open SharpStep.Core
 open System.Reactive.Linq
+open SharpStep.Solvers
 
 module Executor =
 
@@ -18,7 +19,7 @@ module Executor =
             |> Response.strings
             |> Observable.ToObservable
         | Move ((board, side), time) ->
-            Observable.StartAsync(fun () -> Solver.random ((board, side), time))
+            Observable.StartAsync(fun () -> Random.solver ((board, side), time))
             |> Observable.choose id
             |> Observable.map BestMove
             |> Observable.map Response.strings

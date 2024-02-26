@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SharpStep.Core", "SharpStep.Core\SharpStep.Core.fsproj", "{AD7DCC1A-2788-4640-B9CF-0D4A76827EE0}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SharpStep.Solvers", "SharpStep.Solvers\SharpStep.Solvers.fsproj", "{6E08D237-FC0B-4527-BF3E-297B5525D902}"
+EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SharpStep.Tests", "SharpStep.Tests\SharpStep.Tests.fsproj", "{5C640EDC-F5DF-463D-B477-E56DA71A62A7}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SharpStep.Console", "SharpStep.Console\SharpStep.Console.fsproj", "{591380B9-4C00-4181-A8BE-27D2F6D59E89}"
@@ -58,5 +60,17 @@ Global
 		{AD7DCC1A-2788-4640-B9CF-0D4A76827EE0}.Release|x64.Build.0 = Release|Any CPU
 		{AD7DCC1A-2788-4640-B9CF-0D4A76827EE0}.Release|x86.ActiveCfg = Release|Any CPU
 		{AD7DCC1A-2788-4640-B9CF-0D4A76827EE0}.Release|x86.Build.0 = Release|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Debug|x64.Build.0 = Debug|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Debug|x86.Build.0 = Debug|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Release|x64.ActiveCfg = Release|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Release|x64.Build.0 = Release|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Release|x86.ActiveCfg = Release|Any CPU
+		{6E08D237-FC0B-4527-BF3E-297B5525D902}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
