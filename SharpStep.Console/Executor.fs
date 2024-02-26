@@ -14,15 +14,15 @@ module Executor =
             |> Response.strings
             |> Observable.ToObservable
         | Identify ->
-            "0.9"
+            "0.9.1"
             |> Response.identify
             |> Response.strings
             |> Observable.ToObservable
         | Move ((board, side), time) ->
-            Observable.StartAsync(fun () -> Random.solver ((board, side), time))
-            |> Observable.choose id
+            ((board, side), time)
+            |> Random.solver
             |> Observable.map BestMove
             |> Observable.map Response.strings
             |> Observable.map Observable.ToObservable
-            |> Observable.Concat
+            |> Observable.Switch
         | Quit -> Observable.Empty()

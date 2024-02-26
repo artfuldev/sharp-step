@@ -3,6 +3,7 @@
 open System
 open SharpStep.Core
 open SharpStep.Core.Position
+open System.Reactive.Linq
 
 module Random =
 
@@ -20,11 +21,10 @@ module Random =
         Array.toList array
 
     let solver (((board, _), _): Specification) =
-        task {
-            return
-                board
-                |> positions
-                |> Seq.filter ((at board) >> ((=) Playable))
-                |> shuffle
-                |> Seq.tryHead
-        }
+        board
+        |> positions
+        |> Seq.filter ((at board) >> ((=) Playable))
+        |> shuffle
+        |> Seq.tryHead
+        |> Observable.Return
+        |> Observable.choose id
