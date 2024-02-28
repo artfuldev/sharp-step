@@ -14,13 +14,13 @@ module Executor =
             |> Response.strings
             |> Observable.ToObservable
         | Identify ->
-            "1.0"
+            "1.1"
             |> Response.identify
             |> Response.strings
             |> Observable.ToObservable
         | Move ((board, side), time) ->
             ((board, side), time)
-            |> Timed.solver Negamax.solver
+            |> Timed.solver AlphaBeta.solver
             |> Observable.map BestMove
             |> Observable.map Response.strings
             |> Observable.map Observable.ToObservable

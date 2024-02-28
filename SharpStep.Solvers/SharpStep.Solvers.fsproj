@@ -9,7 +9,9 @@
     <Compile Include="Timed.fs" />
     <Compile Include="Random.fs" />
     <Compile Include="Win.fs" />
+    <Compile Include="Evaluation.fs" />
     <Compile Include="Negamax.fs" />
+    <Compile Include="AlphaBeta.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpStep.Core\SharpStep.Core.fsproj" />
