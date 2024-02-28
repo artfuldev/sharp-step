@@ -48,7 +48,7 @@ module AlphaBeta =
             |> Seq.map (fun pos ->
                 let board' = Board.play side pos board
                 let side' = Side.other side
-                (pos, -(evaluate infinity -infinity depth side' board')))
+                (pos, -(evaluate -infinity infinity depth side' board')))
             |> Seq.maxBy snd
             |> fst
             |> Observable.Return
