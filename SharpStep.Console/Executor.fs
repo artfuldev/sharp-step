@@ -14,7 +14,7 @@ module Executor =
             |> Response.strings
             |> Observable.ToObservable
         | Identify ->
-            "1.1"
+            "1.1.1"
             |> Response.identify
             |> Response.strings
             |> Observable.ToObservable

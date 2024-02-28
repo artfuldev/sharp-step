@@ -8,6 +8,13 @@ open Executor
 module App =
 
     let run (Inputs stdin) : Outputs =
+        let _warmup =
+            "move 3_/3_/3_ x"
+            |> parse
+            |> Result.map execute
+            |> Result.map (Observable.subscribe (fun _ -> ()))
+            |> ignore
+
         let parsed =
             stdin
             |> Observable.map parse
