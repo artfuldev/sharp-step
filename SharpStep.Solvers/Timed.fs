@@ -3,9 +3,11 @@ namespace SharpStep.Solvers
 open System
 open System.Reactive.Linq
 open SharpStep.Core
-open SharpStep.Core.Position
+open SharpStep.Core.Board
+open Helpers
 
 module Timed =
+
     let solver (solver: Solver) (((board, side), time): Specification) : IObservable<Position> =
 
         let timeout =
@@ -16,7 +18,7 @@ module Timed =
                 let playable =
                     board
                     |> positions
-                    |> Seq.filter ((at board) >> ((=) Playable))
+                    |> Seq.filter ((flip at) board >> (=) Playable)
                     |> Seq.length
 
                 Observable.Timer(TimeSpan.FromMilliseconds((float ms) / (float playable)))

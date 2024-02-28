@@ -2,8 +2,9 @@
 
 open System
 open SharpStep.Core
-open SharpStep.Core.Position
+open SharpStep.Core.Board
 open System.Reactive.Linq
+open Helpers
 
 module Random =
 
@@ -25,7 +26,7 @@ module Random =
             return
                 board
                 |> positions
-                |> Seq.filter ((at board) >> ((=) Playable))
+                |> Seq.filter ((flip at) board >> (=) Playable)
                 |> shuffle
                 |> Seq.tryHead
         }

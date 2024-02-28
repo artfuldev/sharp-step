@@ -6,9 +6,9 @@
   <ItemGroup>
     <Compile Include="Side.fs" />
     <Compile Include="Cell.fs" />
+    <Compile Include="Position.fs" />
     <Compile Include="Board.fs" />
     <Compile Include="Command.fs" />
-    <Compile Include="Position.fs" />
     <Compile Include="Response.fs" />
   </ItemGroup>
 </Project>

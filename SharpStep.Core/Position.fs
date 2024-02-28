@@ -20,10 +20,3 @@ module Position =
         build index ""
 
     let string (Position (col, row)) = sprintf "%s%d" (column col) (row + 1)
-
-    let positions (Board cells) =
-        cells
-        |> Seq.mapi (fun i row -> row |> Seq.mapi (fun j _ -> Position(j, i)))
-        |> Seq.collect id
-
-    let at (Board cells) (Position (j, i)) = cells.[i].[j]

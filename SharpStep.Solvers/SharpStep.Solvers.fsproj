@@ -5,8 +5,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Solver.fs" />
+    <Compile Include="Helpers.fs" />
     <Compile Include="Timed.fs" />
     <Compile Include="Random.fs" />
+    <Compile Include="Win.fs" />
+    <Compile Include="Negamax.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpStep.Core\SharpStep.Core.fsproj" />
