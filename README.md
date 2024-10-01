@@ -1,6 +1,6 @@
 # sharp-step
 
-A simple tic tac toe engine written in F# that uses ST3P.
+A simple tic tac toe engine written in F# that uses [ST3P](https://gist.github.com/artfuldev/47ef277cf4bbbfdf0eed4750b8821c8c).
 
 ## Running
 
