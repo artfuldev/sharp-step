@@ -9,8 +9,15 @@ type Time =
     | Remaining of Duration
     | Infinite
 
+type WinLength =
+    | Provided of int
+    | Default
+
+module WinLength =
+    let length = function | Default -> None | Provided x -> Some x
+
 type Command =
     | Handshake of Version
     | Identify
-    | Move of (Board * Side) * Time
+    | Move of (Board * Side * Time * WinLength)
     | Quit

@@ -8,7 +8,7 @@ open Helpers
 
 module Timed =
 
-    let solver (solver: Solver) (((board, side), time): Specification) : IObservable<Position> =
+    let solver (solver: Solver) ((board, side, time, winLength): Specification) : IObservable<Position> =
 
         let timeout =
             match time with
@@ -23,7 +23,7 @@ module Timed =
 
                 Observable.Timer(TimeSpan.FromMilliseconds((float ms) / (float playable)))
 
-        ((board, side), time)
+        (board, side, time, winLength)
         |> solver.Invoke
         |> Observable.scan (fun _ -> Some) None
         |> fun x -> Observable.TakeUntil(x, timeout)

@@ -7,9 +7,9 @@ open System
 open System.Reactive.Linq
 
 module AlphaBeta =
-    let rec private evaluate alpha beta depth side board =
-        if depth = 0 || isTerminal None board then
-            heuristic (board) * (float (multiplier side))
+    let rec private evaluate length alpha beta depth side board =
+        if depth = 0 || isTerminal length board then
+            heuristic length (board) * (float (multiplier side))
         else
             let rec loop positions alpha value =
                 match positions with
@@ -20,7 +20,7 @@ module AlphaBeta =
                     let depth' = depth - 1
 
                     let value' =
-                        max value (-evaluate -beta -alpha depth' side' board')
+                        max value (-evaluate length -beta -alpha depth' side' board')
 
                     if value' >= beta then
                         value'
@@ -34,7 +34,7 @@ module AlphaBeta =
 
             loop positions alpha -infinity
 
-    let solver (((board, side), _): Specification) : IObservable<Position> =
+    let solver ((board, side, _, winLength): Specification) : IObservable<Position> =
         let moves =
             Board.positions board
             |> Seq.filter ((flip Board.at) board >> (=) Playable)
@@ -48,7 +48,7 @@ module AlphaBeta =
             |> Seq.map (fun pos ->
                 let board' = Board.play side pos board
                 let side' = Side.other side
-                (pos, -(evaluate -infinity infinity depth side' board')))
+                (pos, -(evaluate (WinLength.length winLength) -infinity infinity depth side' board')))
             |> Seq.maxBy snd
             |> fst
             |> Observable.Return

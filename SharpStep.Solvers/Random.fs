@@ -31,6 +31,6 @@ module Random =
                 |> Seq.tryHead
         }
 
-    let solver (((board, _), _): Specification) =
+    let solver ((board, _, _, _): Specification) =
         Observable.StartAsync(fun () -> position board)
         |> Observable.choose id

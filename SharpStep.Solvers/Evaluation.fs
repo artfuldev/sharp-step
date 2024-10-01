@@ -35,8 +35,8 @@ module Evaluation =
 
         (x - o)
 
-    let internal heuristic board =
-        let positions = Win.positions board None
+    let internal heuristic length board =
+        let positions = Win.positions board length
 
         let winner =
             positions
